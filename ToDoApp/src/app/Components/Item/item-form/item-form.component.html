@@ -1,0 +1,42 @@
+<form novalidate #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+  <input type="hidden" name="itemId" [value]="service.itemData.id" />
+  <div class="form-group" style="padding-bottom: 10px">
+    <input
+      class="form-control"
+      placeholder="Item Name"
+      name="itemName"
+      #itemName="ngModel"
+      [(ngModel)]="service.itemData.name"
+      required
+      maxlength="100"
+      [class.invalid]="itemName.invalid && itemName.touched"
+    />
+    <div *ngIf="itemName.touched">
+      <p *ngIf="itemName.errors?.required">Name is required</p>
+    </div>
+  </div>
+
+  <div class="form-group form-check">
+    <input
+      class="form-check-input radio-inline"
+      type="checkbox"
+      name="isCompleted"
+      #itemStatus="ngModel"
+      [(ngModel)]="service.itemData.isCompleted"
+    />
+    <label class="form-check-label text-success" for="isCompleted"
+      >Completed</label
+    >
+  </div>
+  <div class="form-group">
+    <button
+      color="info"
+      block="true"
+      class="btn btn-primary"
+      type="submit"
+      [disabled]="form.invalid"
+    >
+      Save
+    </button>
+  </div>
+</form>

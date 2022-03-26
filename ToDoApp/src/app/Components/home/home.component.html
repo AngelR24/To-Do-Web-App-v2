@@ -1,0 +1,12 @@
+<br />
+<div *ngIf="isUserAuthenticated()" style="color: blue">
+  <app-items></app-items>
+</div>
+<div *ngIf="!isUserAuthenticated()">
+  <app-login></app-login>
+</div>
+<div class="form-group">
+  <button class="btn btn-primary" type="submit">
+    <a class="logout text-light" (click)="logOut()">Logout</a>
+  </button>
+</div>

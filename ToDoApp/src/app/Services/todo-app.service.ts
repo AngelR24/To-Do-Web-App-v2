@@ -8,8 +8,9 @@ import { Register } from '../Model/register.model';
   providedIn: 'root',
 })
 export class AppService {
-  readonly baseURL = 'https://localhost:44379/api/Item';
-  readonly authenticationURL = 'https://localhost:44379/api/Authentication';
+  readonly root = 'https://localhost:44379/';
+  readonly baseURL = this.root + 'api/Item';
+  readonly authenticationURL = this.root + 'api/Authentication';
   list: Item[] = [];
 
   constructor(private http: HttpClient) {}
